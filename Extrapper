@@ -1,0 +1,103 @@
+<?php 
+function r($length,$nume = true,$upper = true,$low = true) {
+    
+    $num = "123456789";
+    $char_low = "abcdefghijklmnopqrtuvwxyz";
+    $char_upper = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+    $characters = '';
+    if($nume == true){
+        $characters .= $num;
+    } 
+    if($upper == true){
+        $characters .= $char_upper;
+    } 
+    if($low == true){
+        $characters .= $char_low;
+    }
+    $charactersLength = strlen($characters);
+    $randomString = '';
+    for ($i = 0; $i < $length; $i++) {
+        $randomString .= $characters[rand(0, $charactersLength - 1)];
+    }
+    return $randomString;
+}
+?>
+<?php 
+if(isset($_POST['type'])){
+	if($_POST['type'] == "google"){
+	    
+		for($i=0;$i<25;$i++){
+		    for($a = 0 ;$a<5;$a++){
+		        echo r(4,true,true,false)." ";
+		    }
+		    echo "<br>";
+		}
+	} else if($_POST['type'] == "blanja"){
+	    for($i=0;$i<25;$i++){
+		    for($a = 0 ;$a<1;$a++){
+		        echo r(10,true,true,false)." ";
+		    }
+		    echo "<br>";
+		}
+	}
+} else { ?>
+<!DOCTYPE html>
+<html>
+<head>
+	<title>EXTRAP GENERATOR</title>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.css" />
+</head>
+<body>
+<div class="container">
+	<br>
+	<div class='row'>
+		<div class="col-lg-6">
+			<div class="panel panel-primary">
+				<div class="panel-heading">
+					Pilih Extrap
+				</div>
+				<div class="panel-body">
+					<button type="submit" value="google" class="btn btn-primary btn-block">GOOGLE PLAY STORE</button>
+					<button type="submit" value="blanja" class="btn btn-primary btn-block">BLANJA.COM</button>
+
+				</div>
+			</div>
+		</div>
+		<div class="col-lg-6">
+			<div class="panel panel-primary">
+				<div class="panel-heading">
+					Result
+				</div>
+				<div class="panel-body">
+					<pre id='result'>
+						
+					</pre>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+</body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js"></script>
+<script type="text/javascript">
+	$("button").click(function(event) {
+		var val = $(this).val();
+		$("button").attr('disabled', 'disabled');
+		$.ajax({
+			url: '',
+			type: 'POST',
+			dataType: 'html',
+			data: "type="+val,
+		})
+		.done(function(res) {
+			$("button").removeAttr('disabled')
+			$("#result").html(res);
+		})
+		.fail(function() {
+			alert('error bruh');
+		});
+		
+	});
+</script>
+</html>
+<?php } ?>
