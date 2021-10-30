@@ -14,14 +14,6 @@ if($mode == 1){
 }elseif($mode == 2){
     $no= "1502658".str(4);
 }
-$str = "Host: comarketing.bpjsketenagakerjaan.go.id
-Connection: keep-alive
-Accept: */*
-X-Requested-With: XMLHttpRequest
-User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36
-Referer: https://comarketing.bpjsketenagakerjaan.go.id/promo/1177/jd.id.html
-Accept-Language: en-US,en;q=0.9
-Cookie: XSRF-TOKEN=eyJpdiI6IlVFMmJQcGtQY2llN0VKZFFMY1VIQVE9PSIsInZhbHVlIjoicTB2NEMxYzBtamxpMDlUSEVrNnUyWkNaOFZOKzRlc0JEcW9ONGVyOGJDWDVqbEFSWHFFblRRcmhBZkZodzUwQm5HejFydStROVEraEt6b3BDSHdQQ1E9PSIsIm1hYyI6ImNlYWU1MWUxYTJiOTg1MGJjOWJlMDMzZmNhZjRkNGM0NmE4MjhkMmQxNjAxNjVjOGFjMDFmMWEyMjcwNmE1YzYifQ%3D%3D; laravel_session=eyJpdiI6IllMbUdJYktiVm1GMzBrazRSaUo5b1E9PSIsInZhbHVlIjoiaDcwV3l4RXBWRTU2M2RMVWhFNjF2Z2lCblNxXC9wb1BQTjJRXC9sUExNUlRLZnVLSWNTWmV5aGZVaXdGVkVSblpjVExIdXlhODkyUVJHeVwvZkNyUUFOMEE9PSIsIm1hYyI6Ijc2MjZiODJkOGYwOWM5MWUxNDIwNzY4NjZiYTI1ZjU2MmU2ZTdkOTJkODc4NjQ0MTgzNzFmNzc1NTY1OThiZjEifQ%3D%3D; BIGipServerCOMARKETING_PUBLIK.app~COMARKETING_PUBLIK_pool=rd1o00000000000000000000ffffac1c655fo1002";
 $header = explode("\n", $str);
 $c = curl_init("https://comarketing.bpjsketenagakerjaan.go.id/getValidasiTK_KPJ?KPJ=$no&NIK=&_=".time());
     curl_setopt($c, CURLOPT_FOLLOWLOCATION, true);
