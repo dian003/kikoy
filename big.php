@@ -55,14 +55,9 @@ class bigtoken extends modules
                                 $ver2 = $this->curl("https://api.bigtoken.com/signup/email-verification", '{"email":"'.trim($mail).'","verification_code":"'.trim($fetchLocation).'"}', false, false, $hoa);
                                 if(strpos($ver2, 'msg":"Reward successfully made"'))
                                 {
-                                        if($a == 1)
-                                        {
-                                                print str_replace("\r", "", PHP_EOL."Success Verifikasi!".PHP_EOL);
-                                                return false;
-                                        }else{
-                                                print str_replace("\r", "", PHP_EOL.PHP_EOL."Success Verifikasi!".PHP_EOL);
-                                                return false;
-                                        }
+                                        $prepend = $a ==1 ? PHP_EOL : PHP_EOL.PHP_EOL;
+                                        print str_replace("\r", "", $prepend."Success Verifikasi!".PHP_EOL);
+                                        return false;
                                 }else{
                                         print "\rSabar.. ".$a." Sec...";
                                         if($a == 20)
